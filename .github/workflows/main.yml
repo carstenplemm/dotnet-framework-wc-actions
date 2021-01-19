@@ -39,6 +39,8 @@ jobs:
     # Deploy your container to App Service 
     - name: Deploy Container to Azure App Service
       uses: azure/webapps-container-deploy@v1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       with:
         app-name: ${{ secrets.APP_NAME }}
         images: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:${{ github.sha }}
